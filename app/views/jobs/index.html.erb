@@ -1,8 +1,17 @@
 <table class="table table-boldered">
+  <div>
+    <%= link_to("Add a job", new_job_path, class: "btn btn-primary pull-right") %>
+  </div>
+
   <% @jobs.each do |job| %>
   <tr>
     <td>
       <%= link_to(job.title, job_path(job)) %>
+    </td>
+
+    <td>
+      <%= link_to("Edit", edit_job_path(job), class: "btn btn-default") %>
+      <%= link_to("Delete", job_path(job), method: :delete, data: {confirm: "Are you sure?"},  class: "btn btn-default") %>
     </td>
     <td>
       <%= job.created_at%>
