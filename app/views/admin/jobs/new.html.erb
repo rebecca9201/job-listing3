@@ -1,8 +1,4 @@
+<h1 class="text-center"> 新增工作</h1>
 <div>
-  <h1>Add a job</h1>
-  <%= simple_form_for [:admin, @job] do |job|%>
-  <%= job.input :title %>
-  <%= job.input :description %>
-  <%= job.submit "Submit" %>
-  <% end %>
+  <%= render "form" %>
 </div>
