@@ -1,7 +1,7 @@
 class Admin::JobsController < ApplicationController
-  # before_action :authenticate_user!
-  # before_action :require_is_admin
-  # skip_before_filter  :verify_authenticity_token
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :require_is_admin
+
 
   layout "admin"
   def index
@@ -46,15 +46,13 @@ class Admin::JobsController < ApplicationController
 
   def publish
     @job = Job.find(params[:id])
-    @job.is_hidden = false
-    @job.save
+    @job.publish!
     redirect_to :back
   end
 
-  def hide
-    @job = Job.find(params[:id])
-    @job.is_hidden = true
-    @job.save
+def hide
+  @job = Job.find(params[:id])
+    @job.hide!
     redirect_to :back
   end
 
